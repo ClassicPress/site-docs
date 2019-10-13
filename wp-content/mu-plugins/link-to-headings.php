@@ -1,10 +1,6 @@
 <?php
 
 function cpnet_maybe_link_to_headings() {
-	if ( cpnet_subdomain() !== 'docs' ) {
-		return;
-	}
-
 	if ( ! is_singular() ) {
 		return;
 	}
