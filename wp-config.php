@@ -44,6 +44,11 @@ define( 'DB_CHARSET',  getenv( 'DB_CHARSET' ) );
 /** The Database Collate type. Don't change this if in doubt. */
 define( 'DB_COLLATE',  getenv( 'DB_COLLATE' ) );
 
+if ( getenv( 'DB_SSL' ) === 'true' ) {
+	// Connect to MySQL over SSL
+	define( 'MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL );
+}
+
 /**#@+
  * Authentication Unique Keys and Salts.
  *
