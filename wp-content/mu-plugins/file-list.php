@@ -1,6 +1,6 @@
 <?php
 
-add_shortcode( 'cp_file_list', function( $atts ) {
+function cp_file_list_shortcode( $atts ) {
 	$dir = trim( $atts['dir'] ?? '', '/' );
 	if ( empty( $dir ) || ! is_dir( ABSPATH . $dir ) ) {
 		return '';
@@ -48,4 +48,6 @@ add_shortcode( 'cp_file_list', function( $atts ) {
 	$html .= "</table>\n";
 
 	return $html;
-} );
+}
+add_shortcode( 'cp_file_list', 'cp_file_list_shortcode' );
+add_shortcode( 'cp-file-list', 'cp_file_list_shortcode' );
