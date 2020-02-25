@@ -10,8 +10,7 @@ RewriteCond %{REQUEST_URI} ^/README.md
 RewriteRule . /index.php [L]
 
 # Deny access to .php files inside the wp-content dir
-# Mostly exploit/probe attempts, but these legitimate requests will be blocked:
-# /wp-content/plugins/mobile-menu/vendor/titan-framework/lib/iframe-font-preview.php?...
+# Mostly exploit/probe attempts
 # https://stackoverflow.com/a/47139015
 RewriteCond %{REQUEST_URI} ^(.*/)?wp-content/.*\.php$
 RewriteRule . /index.php [L]
