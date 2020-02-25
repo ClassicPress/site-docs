@@ -199,7 +199,6 @@ abstract class Importer {
 		if ( isset( $doc['title'] ) ) {
 			$doc['post_title'] = sanitize_text_field( wp_slash( $doc['title'] ) );
 		}
-		die( "Would create post for {$doc['slug']}" );
 		$post_id = wp_insert_post( $post_data );
 		if ( ! $post_id ) {
 			return false;
