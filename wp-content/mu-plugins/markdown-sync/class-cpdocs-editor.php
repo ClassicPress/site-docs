@@ -9,6 +9,9 @@ class CPDocs_Editor extends Editor {
 	 */
 	public function init() {
 		parent::init();
+		// Edit links on the frontend are handled by this site's theme.
+		remove_filter( 'the_title', [ $this, 'filter_the_title_edit_link' ] );
+		remove_filter( 'get_edit_post_link', [ $this, 'redirect_edit_link_to_github' ] );
 		// Disable some features of the post editor.
 		add_filter( 'replace_editor', [ $this, 'maybe_disable_edits' ], 10, 2 );
 	}
