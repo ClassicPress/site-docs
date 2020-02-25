@@ -101,6 +101,12 @@ abstract class Importer {
 			return new WP_Error( 'invalid-http-code', 'Markdown source returned non-200 http code.' );
 		}
 		$manifest = json_decode( wp_remote_retrieve_body( $response ), true );
+		if ( class_exists( 'WP_CLI' ) ) {
+			WP_CLI::debug(
+				'manifest keys: ' . implode( ', ', array_keys( $manifest ) ),
+				'markdown-sync'
+			);
+		}
 		if ( ! $manifest ) {
 			if ( class_exists( 'WP_CLI' ) ) {
 				WP_CLI::error( 'Invalid manifest' );
@@ -120,6 +126,13 @@ abstract class Importer {
 		}
 		$created = $updated = 0;
 		foreach ( $manifest as $key => $doc ) {
+			if ( class_exists( 'WP_CLI' ) ) {
+				WP_CLI::debug(
+					'manifest[' . $key . ']: '
+					. json_encode( $existing[ $key ] ?? null ),
+					'markdown-sync'
+				);
+			}
 			// Already exists, update.
 			if ( ! empty( $existing[ $key ] ) ) {
 				$existing_id = $existing[ $key ]['post_id'];
@@ -186,6 +199,7 @@ abstract class Importer {
 		if ( isset( $doc['title'] ) ) {
 			$doc['post_title'] = sanitize_text_field( wp_slash( $doc['title'] ) );
 		}
+		die( "Would create post for {$doc['slug']}" );
 		$post_id = wp_insert_post( $post_data );
 		if ( ! $post_id ) {
 			return false;
@@ -392,7 +406,11 @@ abstract class Importer {
 	public function get_markdown_source( $post_id ) {
 		$markdown_source = get_post_meta( $post_id, $this->meta_key, true );
 		if ( ! $markdown_source ) {
-			return new WP_Error( 'missing-markdown-source', 'Markdown source is missing for post.' );
+			$slug = get_post( $post_id )->post_name;
+			return new WP_Error(
+				'missing-markdown-source',
+				"Markdown source is missing for post $post_id ('$slug')."
+			);
 		}
 
 		return $markdown_source;
