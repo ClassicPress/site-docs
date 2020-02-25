@@ -31,7 +31,7 @@ class CPDocs_Importer extends Importer {
 	}
 
 	/**
-	 * Override for finding an existing post based on a manifest key.
+	 * Override for linking up a post to a manifest entry.
 	 *
 	 * The structure of our manifest mirrors the URL structure of this site, so
 	 * we just need to look at the post slug and its parent slugs (if any).
