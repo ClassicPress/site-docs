@@ -3,6 +3,8 @@
 require_once __DIR__ . '/markdown-sync/plugin.php';
 require_once __DIR__ . '/markdown-sync/class-cpdocs-editor.php';
 require_once __DIR__ . '/markdown-sync/class-cpdocs-importer.php';
+require_once __DIR__ . '/markdown-sync/jetpack-markdown/extra.php';
+require_once __DIR__ . '/markdown-sync/jetpack-markdown/gfm.php';
 
 $cpnet_docs_importer = new CPDocs_Importer();
 $cpnet_docs_editor = new CPDocs_Editor( $cpnet_docs_importer );
