@@ -17,6 +17,17 @@ class CPDocs_Editor extends Editor {
 	}
 
 	/**
+	 * Override for getting a markdown edit link.
+	 *
+	 * This override exists to change the method visibility to public, so that
+	 * we can use it elsewhere.  Fixing this in the original plugin would be a
+	 * backwards-incompatible change.
+	 */
+	public function get_markdown_edit_link( $post_id ) {
+		return parent::get_markdown_edit_link( $post_id );
+	}
+
+	/**
 	 * New function to determine whether this particular post is handled by the
 	 * markdown sync system.
 	 */

@@ -171,7 +171,7 @@ class Editor {
 		return $actions;
 	}
 
-	public function get_markdown_edit_link( $post_id ) {
+	protected function get_markdown_edit_link( $post_id ) {
 		$markdown_source = $this->importer->get_markdown_source( $post_id );
 		if ( is_wp_error( $markdown_source ) ) {
 			return '';
