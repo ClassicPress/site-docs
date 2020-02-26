@@ -231,27 +231,29 @@ abstract class Importer {
 		$q = new WP_Query( array(
 			'post_type'      => $this->get_post_type(),
 			'post_status'    => 'publish',
-			'fields'         => 'ids',
 			'posts_per_page' => $this->posts_per_page,
 		) );
-		$ids = $q->posts;
 		$success = 0;
-		foreach( $ids as $id ) {
-			$ret = $this->update_post_from_markdown_source( $id );
+		foreach( $q->posts as $post ) {
+			$ret = $this->update_post_from_markdown_source( $post->ID );
 			if ( class_exists( 'WP_CLI' ) ) {
 				if ( is_wp_error( $ret ) ) {
 					WP_CLI::warning( $ret->get_error_message() );
 				} elseif ( false === $ret ) {
-					WP_CLI::log( "No updates for {$id}" );
+					WP_CLI::log(
+						"No updates for post {$post->ID} ('{$post->post_name}')"
+					);
 					$success++;
 				} else {
-					WP_CLI::log( "Updated {$id} from markdown source" );
+					WP_CLI::log(
+						"Updated post {$post->ID} ('{$post->post_name}')"
+					);
 					$success++;
 				}
 			}
 		}
 		if ( class_exists( 'WP_CLI' ) ) {
-			$total = count( $ids );
+			$total = count( $q->posts );
 			WP_CLI::success( "Successfully updated {$success} of {$total} pages." );
 		}
 	}
