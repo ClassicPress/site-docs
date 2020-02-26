@@ -267,8 +267,14 @@ abstract class Importer {
 		if ( is_wp_error( $markdown_source ) ) {
 			return $markdown_source;
 		}
-		if ( ! function_exists( 'jetpack_require_lib' ) ) {
-			return new WP_Error( 'missing-jetpack-require-lib', 'jetpack_require_lib() is missing on system.' );
+		if (
+			! function_exists( 'jetpack_require_lib' ) &&
+			! class_exists( 'WPCom_GHF_Markdown_Parser' )
+		) {
+			return new WP_Error(
+				'missing-jetpack-require-lib',
+				'Missing `jetpack_require_lib()` or `class WPCom_GHF_Markdown_Parser`.'
+			);
 		}
 
 		// Transform GitHub repo HTML pages into their raw equivalents
@@ -330,7 +336,10 @@ abstract class Importer {
 		}
 
 		// Transform to HTML and save the post
-		jetpack_require_lib( 'markdown' );
+		if ( ! class_exists( 'WPCom_GHF_Markdown_Parser' ) ) {
+			// We checked for jetpack_require_lib() above.
+			jetpack_require_lib( 'markdown' );
+		}
 		$parser = new WPCom_GHF_Markdown_Parser();
 		$parser->preserve_shortcodes = false;
 		$html = $parser->transform( $markdown );
