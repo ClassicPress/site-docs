@@ -1,47 +1,26 @@
-# WPORG Markdown Importer
+## Markdown Sync
 
-Imports Markdown from a remote site (like GitHub) into WordPress as pages.
+This system allows managing the content of the ClassicPress documentation site
+as a set of Markdown files stored on GitHub.  Much of the documentation on
+wordpress.org works similarly.
 
-## Configuration
+The code in this directory is comprised of:
 
-Each importer needs to override the abstract methods:
+- Files from https://github.com/WP-API/markdown-sync (`plugin.php` and the
+  `inc` directory)
+- Files from
+  [Jetpack](https://github.com/Automattic/jetpack/tree/master/_inc/lib/markdown)
+  (the `jetpack-markdown` directory)
+- Classes that configure and override the markdown sync behavior for this site
+  (`class-cpdocs-importer.php` and `class-cpdocs-editor.php`)
 
-* `get_base()` - Base URL for imported pages. This will be stripped from the key before comparing.
-* `get_manifest_url()` - URL pointing to the manifest.
-* `get_post_type()` - Post type to import as.
+The `wp-content/mu-plugins/markdown-sync.php` file is responsible for loading
+this code in the appropriate order and registering the `wp markdown-sync`
+WP-CLI commands.
 
-## Manifest Format
+Other elements required to make this into a working system:
 
-The manifest should be a JSON object, with the keys set to the desired permalink (excluding the base path). Each item should also be a JSON object, containing the following keys:
-
-* `slug` - Post name to insert. (Must match the final path-part of the key.)
-* `markdown_source` - URL for the Markdown file to parse into content.
-* `parent` - Key for the parent to store under. (Must correspond to the non-final path-parts of the key.)
-* `title` - Title to use when creating post. Used temporarily, will be updated from the Markdown file. If not specified, defaults to `slug` (but will be updated from Markdown source).
-
-**Note:** The Handbook index should have the slug `index`.
-
-Example:
-
-```json
-{
-	"foo": {
-		"title": "Temporary Foo Title",
-		"slug": "foo",
-		"markdown_source": "https://raw.githubusercontent.com/WordPress/doc-repo/master/foo.md",
-		"parent": null
-	},
-	"foo/bar": {
-		"title": "Temporary Bar Title",
-		"slug": "bar",
-		"markdown_source": "https://raw.githubusercontent.com/WordPress/doc-repo/master/foo/bar.md",
-		"parent": "foo"
-	},
-	"foo/bar/quux": {
-		"title": "Temporary Quux Title",
-		"slug": "quux",
-		"markdown_source": "https://raw.githubusercontent.com/WordPress/doc-repo/master/foo/bar/quux.md",
-		"parent": "foo/bar"
-	}
-}
-```
+- The https://github.com/ClassicPress/ClassicPress-docs repository where the
+  content and the JSON manifest file live
+- Code in the site's theme to show edit links on the frontend
+- A cron job to run `wp markdown-sync import-all` regularly.
