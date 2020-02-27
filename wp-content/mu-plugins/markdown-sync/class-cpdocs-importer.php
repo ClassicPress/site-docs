@@ -17,10 +17,17 @@ class CPDocs_Importer extends Importer {
 	 * Mandatory override for manifest URL.
 	 */
 	public function get_manifest_url() {
-		return (
-			'https://raw.githubusercontent.com/'
-			. 'ClassicPress/ClassicPress-docs/master/bin/manifest.json'
-		);
+		// During local development this can be set in the `.env` config file.
+		$manifest_url = getenv( 'MARKDOWN_MANIFEST_URL' );
+
+		if ( empty( $manifest_url ) ) {
+			$manifest_url = (
+				'https://raw.githubusercontent.com/'
+				. 'ClassicPress/ClassicPress-docs/master/bin/manifest.json'
+			);
+		}
+
+		return $manifest_url;
 	}
 
 	/**

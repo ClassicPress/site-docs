@@ -24,3 +24,49 @@ Other elements required to make this into a working system:
   content and the JSON manifest file live
 - Code in the site's theme to show edit links on the frontend
 - A cron job to run `wp markdown-sync import-all` regularly.
+
+### Local development
+
+The following are rough steps for making the markdown sync process work on your
+local development server.
+
+1. Get a copy of this site running.
+
+2. Clone the https://github.com/ClassicPress/ClassicPress-docs repository and
+   make your local web server host its files also.
+
+3. Generate a new `bin/manifest.json` file for local development.
+
+   For example, if this repository is available via your local dev server at
+   `http://docs.classicpress.local/docs-content/` then you can run:
+
+   ```sh
+   MANIFEST_BASE_URL=http://docs.classicpress.local/docs-content/ php bin/generate-manifest.php
+   ```
+
+4. In your `.env` config file, set the `MARKDOWN_MANIFEST_URL` variable to the
+   URL of your local manifest.  For example:
+
+   ```sh
+    MARKDOWN_MANIFEST_URL=http://docs.classicpress.local/docs-content/bin/manifest.json
+   ```
+
+5. You can use the following WP-CLI commands to re-sync the site's content:
+
+   ```sh
+   wp markdown-sync import-manifest --debug=markdown-sync
+   wp markdown-sync import-content
+   # or both steps at once:
+   wp markdown-sync import-all
+   ```
+
+6. After importing Markdown content, you'll need to update links so that they
+   point back to your local installation again:
+
+   ```
+   wp search-replace https://docs.classicpress.net http://docs.classicpress.local
+   ```
+
+Now you can continue editing your local copy of the Markdown documentation
+files, and submit your edits as a pull request on GitHub when your changes are
+ready.

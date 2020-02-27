@@ -36,18 +36,6 @@ https://github.com/ClassicPress/ClassicPress-docs repository.
 
 See the
 [`wp-content/mu-plugins/markdown-sync`](wp-content/mu-plugins/markdown-sync)
-subdirectory for more information about this setup.
+subdirectory for more information about this setup and how to make it work
+during local development.
 
-When developing the site locally, you can use the following WP-CLI commands to
-re-sync the site's content:
-
-```
-wp markdown-sync import-manifest --debug=markdown-sync
-wp markdown-sync import-content
-```
-
-After importing content, you'll need to update links so that they point back to your local installation again:
-
-```
-wp search-replace https://docs.classicpress.net http://docs.classicpress.local
-```
