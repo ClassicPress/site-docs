@@ -475,7 +475,7 @@ function cpnet_docs_css_src( $atts ) {
 add_shortcode( 'cpnet_docs_search_form', __NAMESPACE__ . '\\cpnet_docs_css_src' );
 
 /**
- * Remove WPAutop
+ * Change priority of WPAutoP to avoid interfering with shortcodes
  * @see https://forums.classicpress.net/t/shortcodes-on-user-guide-page/3318/5
  */
 remove_filter( 'the_content', 'wpautop', 9);
