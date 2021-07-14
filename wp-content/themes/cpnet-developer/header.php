@@ -18,16 +18,12 @@ $GLOBALS['pagetitle'] = wp_get_document_title();
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 <link rel="dns-prefetch" href="//fonts.gstatic.com" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ClassicPress</title>
 <meta name="referrer" content="always">
+<?php wp_head(); ?>
 </head>
 
 
 <body id="classicpress-org" <?php body_class(); ?>>
-
-
-
-<?php wp_head(); ?>
 
 <header id="masthead" class="site-header
 <?php

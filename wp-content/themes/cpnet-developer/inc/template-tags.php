@@ -1323,8 +1323,10 @@ namespace DevHub {
 	 */
 	function get_source_code_root_dir() {
 		$root_dir = get_option( 'wp_parser_root_import_dir' );
-
-		return $root_dir ? trailingslashit( $root_dir ) : ABSPATH;
+		return ABSPATH;
+		// Mistakenly the option wp_parser_root_import_dir was not updated on DB import and still points to my local. 
+		// Thus use ABSPATH by default
+		//return $root_dir ? trailingslashit( $root_dir ) : ABSPATH;
 	}
 
 	/**
