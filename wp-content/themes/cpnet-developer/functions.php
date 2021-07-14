@@ -302,8 +302,8 @@ function header_js() {
 function theme_scripts_styles() {
 	wp_enqueue_style( 'dashicons' );
 	wp_enqueue_style( 'open-sans', '//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,300,600' );
-	wp_enqueue_style( 'wporg-developer-style', get_stylesheet_uri(), array(), '3' );
-	wp_enqueue_style( 'wp-dev-sass-compiled', get_template_directory_uri() . '/stylesheets/main.css', array( 'wporg-developer-style' ), '20200713' );
+	wp_enqueue_style( 'cpnet-developer-style', get_stylesheet_uri(), array(), '20210714.3' );
+	wp_enqueue_style( 'wp-dev-sass-compiled', get_template_directory_uri() . '/stylesheets/main.css', array( 'cpnet-developer-style' ), '20210713' );
 	wp_enqueue_script( 'wporg-developer-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 	wp_enqueue_script( 'wporg-developer-search', get_template_directory_uri() . '/js/search.js', array(), '20150430', true );
 	wp_enqueue_script( 'wporg-developer-chapters', get_template_directory_uri() . '/js/chapters.js', array( 'jquery' ), '20190603' );
@@ -480,3 +480,14 @@ add_shortcode( 'cpnet_docs_search_form', __NAMESPACE__ . '\\cpnet_docs_css_src' 
  */
 remove_filter( 'the_content', 'wpautop', 9);
 add_filter( 'the_content', 'wpautop', 11);
+
+/**
+ * Remove the CSS that positions the admin bar
+ *
+ * This is handled via flexbox instead.
+ *
+ * @see https://forums.classicpress.net/t/docs-site-needs-a-footer/3317
+ */
+add_action( 'admin_bar_init', function() {
+	remove_action( 'wp_head', '_admin_bar_bump_cb' );
+} );
