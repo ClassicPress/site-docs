@@ -4,8 +4,17 @@ function cpnet_maybe_link_to_headings() {
 	if ( ! is_singular() ) {
 		return;
 	}
-
-	add_filter( 'the_content', 'cpnet_link_to_headings' );
+	switch ( get_post_type() ) {
+		case 'page':
+		case 'user-guides':
+		case 'developer-guides':
+			// OK to proceed with this post type
+			add_filter( 'the_content', 'cpnet_link_to_headings' );
+			break;
+		default:
+			// Other post types should not be modified
+			return;
+	}
 }
 add_action( 'wp', 'cpnet_maybe_link_to_headings' );
 
