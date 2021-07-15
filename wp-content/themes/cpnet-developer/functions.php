@@ -302,7 +302,7 @@ function header_js() {
 function theme_scripts_styles() {
 	wp_enqueue_style( 'dashicons' );
 	wp_enqueue_style( 'open-sans', '//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,300,600' );
-	wp_enqueue_style( 'cpnet-developer-style', get_stylesheet_uri(), array(), '20210714.3' );
+	wp_enqueue_style( 'cpnet-developer-style', get_stylesheet_uri(), array(), '20210715' );
 	wp_enqueue_style( 'wp-dev-sass-compiled', get_template_directory_uri() . '/stylesheets/main.css', array( 'cpnet-developer-style' ), '20210713' );
 	wp_enqueue_script( 'wporg-developer-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 	wp_enqueue_script( 'wporg-developer-search', get_template_directory_uri() . '/js/search.js', array(), '20150430', true );
