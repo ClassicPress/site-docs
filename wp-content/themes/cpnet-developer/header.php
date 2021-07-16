@@ -56,7 +56,7 @@ if ( is_front_page() ) {
 			<?php get_search_form(); ?>
 			<div id="inner-search-icon-container">
 				<div id="inner-search-icon">
-					<div class="dashicons dashicons-search"><span class="screen-reader-text"><?php _e( 'Search', 'classicpress' ); ?></span></div>
+					<button class="dashicons dashicons-search"><span class="screen-reader-text"><?php _e( 'Search', 'classicpress' ); ?></span></button>
 				</div>
 			</div>
 		</div>
