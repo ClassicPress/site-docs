@@ -1,4 +1,4 @@
-<?php
+<?php if ( ! defined( 'ABSPATH' ) ) { exit; }
 /**
  * Plugin Name: ClassicPress Docs Table of Contents
  * Description: Provides a table of contents for the ClassicPress Docs site.
