@@ -73,6 +73,10 @@ body {
 body > header, #page {
 	flex: 1;
 }
+body:not(.home) > #masthead  {
+max-height: 61px;
+min-height: 61px;
+}
 .site-info {
 	color: #ffffff;
 	background-color: #222222;
@@ -86,3 +90,35 @@ a.footer-link {
 a.footer-link-grey {
 	color: #aaa;
 }
+
+/** Top Search button */
+button.top-src-btn {
+	padding:  0px !important;
+	background:  rgba(5, 127, 153, 1.0) !important;
+	border:  0px !important;
+}
+button.top-src-btn:hover {
+	background:  rgba(5, 127, 153, 1.0) !important;
+	border:  0px !important;
+}
+/*contribute box main ladning page*/
+.contribute-wrap{
+	width: 100%;
+	text-align: center;
+	margin-top:  0px !important;
+}
+.box-contribute{
+	width: 100% !important;
+}
+/*code syntax*/
+pre.folded{
+	max-height: 309px;
+}
+#toggle-complete-source{
+	display: none;
+	margin-right: 15px;
+}
+p.source-action-links{
+	display: inline-flex;
+}
+	

@@ -10,7 +10,7 @@
 get_header(); ?>
 
 	<div id="primary" class="content-area">
-		
+
 		<main id="main" class="site-main" role="main">
 
 			<div class="home-landing">
@@ -43,25 +43,21 @@ get_header(); ?>
 
 				</div>
 
-				<div class="search-guide inner-wrap section">
+				<div class="contribute-wrap inner-wrap section">
 
-					<div class=" box"></div>
-				
-
-					<div class="box">
+					<div class="box box-contribute">
 						<h3 class="widget-title"><?php esc_html_e( 'Contribute', 'classicpress' ); ?></h3>
 						<ul class="unordered-list no-bullets">
 							<li><a href="https://www.classicpress.net/community/" class="make-wp-link"><?php esc_html_e( 'Help Make ClassicPress', 'classicpress' ); ?></a></li>
 						</ul>
 					</div>
 
-				
-					<div class=" box"></div>
-				
 				</div>
 
 			</div><!-- /home-landing -->
-		</div><!-- #main -->
+
+		</main><!-- /main -->
+
 	</div><!-- #primary -->
 
 <?php get_footer(); ?>

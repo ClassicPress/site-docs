@@ -15,7 +15,7 @@ get_header(); ?>
 			<span class="sep">/</span>
 			<?php if ( $GLOBALS['wp_query']->is_handbook ) : ?>
 			<span><a href="<?php echo esc_url( get_query_var( 'current_handbook_home_url' ) ); ?>"><?php echo get_query_var( 'current_handbook_name' ); ?></a></span>
-			<?php elseif ( $reference_page = get_page_by_path( 'reference' ) ) : ?>
+			<?php elseif ( $reference_page = get_page_by_path( 'code-reference' ) ) : ?>
 			<span><a href="<?php echo esc_url( get_permalink( $reference_page ) ); ?>"><?php echo get_the_title( $reference_page ); ?></a></span>
 			<?php endif; ?>
 			<span class="sep">/</span>

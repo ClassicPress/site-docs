@@ -12,11 +12,9 @@ $GLOBALS['pagetitle'] = wp_get_document_title();
 
 ?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" <?php language_attributes(); ?>>
 <head>
 <meta charset="utf-8" />
-<link rel="dns-prefetch" href="//fonts.googleapis.com" />
-<link rel="dns-prefetch" href="//fonts.gstatic.com" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="always">
 <?php wp_head(); ?>
@@ -33,12 +31,10 @@ if ( is_front_page() ) {
 " role="banner">
 	
 	<div class="site-branding">
-		<h1 class="site-title">
-			<a href="<?php echo esc_url( get_home_url() ); ?>" rel="home"><?php echo esc_html( DevHub\get_site_section_title() ); ?></a>
-		</h1>
+		<a href="<?php echo esc_url( get_home_url() ); ?>" rel="home"><img src="https://docs.classicpress.net/wp-content/themes/cpnet-developer/images/logo-white.svg" width="250" alt="ClassicPress logo"></a>
 
 		<?php if ( is_front_page() ) : ?>
-		<p class="site-description"><?php esc_html_e( 'Stable. Secure. Instantly Familiar.', 'classicpress' ); ?></p>
+		<h1 class="site-description"><?php esc_html_e( 'Stable. Secure. Instantly Familiar.', 'classicpress' ); ?></h1>
 		<?php endif; ?>
 
 		
@@ -56,7 +52,7 @@ if ( is_front_page() ) {
 			<?php get_search_form(); ?>
 			<div id="inner-search-icon-container">
 				<div id="inner-search-icon">
-					<button type="button" class="dashicons dashicons-search"><span class="screen-reader-text"><?php _e( 'Search', 'classicpress' ); ?></span></button>
+					<button type="button" class="dashicons dashicons-search top-src-btn"><span class="screen-reader-text"><?php _e( 'Search', 'classicpress' ); ?></span></button>
 				</div>
 			</div>
 		</div>

@@ -1,5 +1,4 @@
 <?php
-
 namespace DevHub;
 
 /**
@@ -301,13 +300,22 @@ function header_js() {
 
 function theme_scripts_styles() {
 	wp_enqueue_style( 'dashicons' );
-	wp_enqueue_style( 'open-sans', '//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,300,600' );
-	wp_enqueue_style( 'cpnet-developer-style', get_stylesheet_uri(), array(), '20210715' );
+	wp_enqueue_style( 'cpnet-developer-style', get_stylesheet_uri(), array(), '20210730' );
 	wp_enqueue_style( 'wp-dev-sass-compiled', get_template_directory_uri() . '/stylesheets/main.css', array( 'cpnet-developer-style' ), '20210713' );
 	wp_enqueue_script( 'wporg-developer-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 	wp_enqueue_script( 'wporg-developer-search', get_template_directory_uri() . '/js/search.js', array(), '20150430', true );
 	wp_enqueue_script( 'wporg-developer-chapters', get_template_directory_uri() . '/js/chapters.js', array( 'jquery' ), '20190603' );
+	wp_enqueue_style( 'code-syntax-hglt', get_template_directory_uri() . '/stylesheets/prism.css', array(  ), '20200713' );
+	wp_enqueue_script( 'code-syntax-hglt', get_template_directory_uri() . '/js/prism.js', array(  ), '20190603', true );
 }
+
+/**
+ * Remove Emojy Support
+ */
+remove_action('wp_head', 'print_emoji_detection_script', 7);
+remove_action('wp_print_styles', 'print_emoji_styles');
+remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+remove_action( 'admin_print_styles', 'print_emoji_styles' );
 
 /**
  * Rename the 'Comments' meta box to 'User Contributed Notes' for reference-editing screens.
@@ -480,6 +488,78 @@ add_shortcode( 'cpnet_docs_search_form', __NAMESPACE__ . '\\cpnet_docs_css_src' 
  */
 remove_filter( 'the_content', 'wpautop', 9);
 add_filter( 'the_content', 'wpautop', 11);
+
+/**
+ * Add Menu Order to CPTs.
+ * Add CPTs Edit Posts Table Menu Order Sort and Order Column.
+ * Make those columns sortable.
+ * Make User Guides Hierarchical.
+ * @see https://forums.classicpress.net/t/ordering-of-guides-on-doc-site/3328
+ */
+// Add page Attributes.
+add_action('admin_init', __NAMESPACE__ . '\\cpnet_cpt_page_attributes');
+// Add new Column.
+add_action('manage_edit-wp-plugin-guidelines_columns', __NAMESPACE__ . '\\cpnet_cpt_add_new_menu_order_column');
+add_action('manage_edit-wp-developer-guides_columns', __NAMESPACE__ . '\\cpnet_cpt_add_new_menu_order_column');
+add_action('manage_edit-wp-user-guides_columns', __NAMESPACE__ . '\\cpnet_cpt_add_new_menu_order_column');
+// Show column contents.
+add_action('manage_wp-plugin-guidelines_posts_custom_column', __NAMESPACE__ . '\\cpnet_menu_order_show_column');
+add_action('manage_wp-developer-guides_posts_custom_column', __NAMESPACE__ . '\\cpnet_menu_order_show_column');
+add_action('manage_wp-user-guides_posts_custom_column', __NAMESPACE__ . '\\cpnet_menu_order_show_column');
+// Make column sortable.
+add_filter('manage_edit-wp-plugin-guidelines_sortable_columns', __NAMESPACE__ . '\\cpnew_menu_order_column_register_sortable');
+add_filter('manage_edit-wp-developer-guides_sortable_columns', __NAMESPACE__ . '\\cpnew_menu_order_column_register_sortable');
+add_filter('manage_edit-wp-user-guides_sortable_columns', __NAMESPACE__ . '\\cpnew_menu_order_column_register_sortable');
+// Make User Guides Hierarchical.
+add_filter('register_post_type_args', __NAMESPACE__ . '\\cpnet_cpt_hierarchical_posts', 10, 2);
+/** 
+ * Callback on register_post_type_args to make User Guides hierarchical.
+ */
+function cpnet_cpt_hierarchical_posts($args, $post_type){
+ 
+    if ($post_type == 'wp-user-guides'){
+        $args['hierarchical'] = true;
+    }
+ 
+    return $args;
+}
+/** 
+ * Callback on admin_init to add page attributes to CPT.
+ */
+function cpnet_cpt_page_attributes(){
+    add_post_type_support( 'wp-plugin-guidelines', 'page-attributes' );
+    add_post_type_support( 'wp-developer-guides', 'page-attributes' );
+    add_post_type_support( 'wp-user-guides', 'page-attributes' );
+}
+/** 
+ * Callback on manage_edit-{post-type}_columns to add new columns to edit posts table.
+ */
+function cpnet_cpt_add_new_menu_order_column($post_columns) {
+  	$post_columns['menu_order'] = "Order";
+  	return $post_columns;
+}
+/** 
+ * Callback on manage_{post-type}_posts_custom_column to show columns contents.
+ */
+function cpnet_menu_order_show_column($name){
+  	global $post;
+
+  	switch ($name) {
+    	case 'menu_order':
+    		$order = $post->menu_order;
+      		echo $order;
+      	break;
+   		default:
+   			break;
+   	}
+}
+/** 
+ * Callback on manage_edit-{post-type}_sortable_columns to make column sortable.
+ */
+function cpnew_menu_order_column_register_sortable($columns){
+  	$columns['menu_order'] = 'menu_order';
+  	return $columns;
+}
 
 /**
  * Remove the CSS that positions the admin bar
