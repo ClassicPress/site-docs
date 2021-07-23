@@ -122,3 +122,32 @@ p.source-action-links{
 	display: inline-flex;
 }
 	
+/* ToC and headings */
+h1, h2, h3 {
+	position: relative;
+}
+a.cp-heading-link {
+	border-bottom: none;
+	font-weight: normal;
+	font-size: 0.85em;
+	display: block;
+	position: absolute;
+	top: 0.1em;
+	left: -1.2em;
+	color: #057f99;
+}
+@media (max-width: 800px) {
+	a.cp-heading-link {
+		left: -1em;
+	}
+}
+a.cp-heading-link:hover {
+	text-decoration: underline;
+	color: #3ebca6;
+}
+.cpnet-toc ul {
+	margin-bottom: 0;
+}
+.cpnet-toc {
+	margin-bottom: 1.5em;
+}

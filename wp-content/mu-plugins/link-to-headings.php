@@ -6,8 +6,8 @@ function cpnet_maybe_link_to_headings() {
 	}
 	switch ( get_post_type() ) {
 		case 'page':
-		case 'user-guides':
-		case 'developer-guides':
+		case 'wp-user-guides':
+		case 'wp-developer-guides':
 			// OK to proceed with this post type
 			add_filter( 'the_content', 'cpnet_link_to_headings' );
 			break;
