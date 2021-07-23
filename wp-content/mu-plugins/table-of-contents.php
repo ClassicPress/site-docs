@@ -22,7 +22,7 @@ function cp_docs_add_toc( $content ) {
 		return $content;
 	}
 
-	// Display only on code pages (or do we want this on other pages too?)
+	// Display only on code pages
 	if ( ! is_singular( ['single-wp-parser-function', 'single-wp-parser-hook', 'single-wp-parser-class', 'single-wp-parser-method'] ) ) {
 		return $content;
 	}
