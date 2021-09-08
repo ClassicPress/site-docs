@@ -835,7 +835,6 @@ input {
   font-size: 37px;
   font-size: 3.7rem;
   color: #606060;
-  text-align: center;
 }
 
 .devhub-wrap h1.entry-title a,
@@ -3247,4 +3246,9 @@ button.code-tab.is-active {
 
 .code-tab-block.is-active {
   display: block;
+}
+
+.copy-to-clipboard-button{
+  color: black !important;
+  background: rgb(224 224 224 / 61%) !important;
 }

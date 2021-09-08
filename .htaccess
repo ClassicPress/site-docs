@@ -45,4 +45,5 @@ RedirectMatch 302 ^/updating-classicpress/?$ /user-guides/updating-classicpress/
 RedirectMatch 302 ^/faq-and-support/?$ /user-guides/faq-and-support/
 RedirectMatch 302 ^/using-classicpress/custom-login-image/?$ /user-guides/custom-login-image/
 RedirectMatch 302 ^/developing-classicpress/security-page/?$ /developer-guides/security-page/
+RedirectMatch 302 ^/faq-support/?$ /user-guides/faq-and-support/
 # END 302 Redirects

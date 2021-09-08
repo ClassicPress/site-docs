@@ -18,7 +18,8 @@ get_header(); ?>
 		<main id="main" class="site-main" role="main">
 			<div class="reference-landing">
 				<div class="search-guide section clear">
-					<h4 class="ref-intro"><?php _e( 'Want to know what&#39;s going on inside ClassicPress? Search the Code Reference for more information about ClassicPress&#39; functions, classes, methods, and hooks.', 'wporg' ); ?></h4>
+					<h1>Code Reference</h1>
+					<h2 class="ref-intro"><?php _e( 'Want to know what&#39;s going on inside ClassicPress? Search the Code Reference for more information about ClassicPress&#39; functions, classes, methods, and hooks.', 'wporg' ); ?></h2>
 					<h3 class="search-intro"><?php _e( 'Try it out:', 'wporg' ); ?></h3>
 					<?php get_search_form(); ?>
 				</div><!-- /search-guide -->

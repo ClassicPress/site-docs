@@ -34,7 +34,7 @@ if ( is_front_page() ) {
 		<a href="<?php echo esc_url( get_home_url() ); ?>" rel="home"><img src="https://docs.classicpress.net/wp-content/themes/cpnet-developer/images/logo-white.svg" width="250" alt="ClassicPress logo"></a>
 
 		<?php if ( is_front_page() ) : ?>
-		<h1 class="site-description"><?php esc_html_e( 'Stable. Secure. Instantly Familiar.', 'classicpress' ); ?></h1>
+		<h1 class="site-description"><?php echo esc_textarea( get_bloginfo( 'description' ) ); ?></h1>
 		<?php endif; ?>
 
 		
