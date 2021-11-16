@@ -1346,9 +1346,23 @@ namespace DevHub {
 
 		// Get the source code stored in post meta.
 		$meta_key = '_wp-parser_source_code';
-		if ( ! $force_parse && $source_code = get_post_meta( $post_id, $meta_key, true ) ) {
-			return $source_code;
-		}
+		/**
+		 * Update 16 nov 2021
+		 * This chunk of code merely checks if a database entry exists for the code.
+		 * If it exists, it pulls that, instead of parsing the actual code afresh.
+		 * This is all good and fine, but it does not work when _changes_ are made to the code, and the code was already parsed in past.
+		 * While the _right_ thing would be to either enforce the $force_parse flag where this function is used, when the code needs an update,
+		 * or to check if the parsed code is !== to the existing saved code, and run this function only if it is necessary,
+		 * these workarounds are basically as resourec intensive as just parsing the code each time it gets visited.
+		 *
+		 * Yes, whenever a user visits any pagae with code inside the code reference, the system will get the file, line and chunk of code to parse.
+		 * It will parse it, and save it to the database, so it can then be displayed.
+		 * Yes, this can and should be improved, but for now, this is the easiest solution.
+		 * In 3 out of 6 cases this method does run the parser by force _anyway_, so there is little point or saved resource in not just running it always
+		 */
+		// if ( ! $force_parse && $source_code = get_post_meta( $post_id, $meta_key, true ) ) {
+			// return $source_code;
+		// }
 
 		/* Source code hasn't been stored in post meta, so parse source file to get it. */
 
