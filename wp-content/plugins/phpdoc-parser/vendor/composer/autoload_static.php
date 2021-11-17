@@ -7,10 +7,7 @@ namespace Composer\Autoload;
 class ComposerStaticInit3236ae577c62534a9dc5c669b85d17a5
 {
     public static $files = array (
-        '026a968263ec72e63c0a08beed134bb1' => __DIR__ . '/..' . '/scribu/scb-framework/load-composer.php',
-        'a5d94d5918910fbb77c98dd8aa0cc5d9' => __DIR__ . '/..' . '/scribu/scb-framework/Util.php',
         'fe1bcd0336136e435eaf197895daf81a' => __DIR__ . '/..' . '/nikic/php-parser/lib/bootstrap.php',
-        'ccd56a9d2abb29bc4eedd4043666e3dd' => __DIR__ . '/..' . '/scribu/lib-posts-to-posts/autoload.php',
         '2795ee4f58713c0c57b8e0e1b528277b' => __DIR__ . '/../..' . '/lib/runner.php',
         '70422b1e2bdbbe0abd94363c5534e7bd' => __DIR__ . '/../..' . '/lib/template.php',
     );
@@ -70,27 +67,6 @@ class ComposerStaticInit3236ae577c62534a9dc5c669b85d17a5
         'WP_Parser\\Relationships' => __DIR__ . '/../..' . '/lib/class-relationships.php',
         'WP_Parser\\Static_Method_Call_Reflector' => __DIR__ . '/../..' . '/lib/class-static-method-call-reflector.php',
         'WP_Parser\\WP_CLI_Logger' => __DIR__ . '/../..' . '/lib/class-wp-cli-logger.php',
-        'scbAdminPage' => __DIR__ . '/..' . '/scribu/scb-framework/AdminPage.php',
-        'scbBoxesPage' => __DIR__ . '/..' . '/scribu/scb-framework/BoxesPage.php',
-        'scbCron' => __DIR__ . '/..' . '/scribu/scb-framework/Cron.php',
-        'scbCustomField' => __DIR__ . '/..' . '/scribu/scb-framework/Forms.php',
-        'scbForm' => __DIR__ . '/..' . '/scribu/scb-framework/Forms.php',
-        'scbFormField' => __DIR__ . '/..' . '/scribu/scb-framework/Forms.php',
-        'scbFormField_I' => __DIR__ . '/..' . '/scribu/scb-framework/Forms.php',
-        'scbForms' => __DIR__ . '/..' . '/scribu/scb-framework/Forms.php',
-        'scbHooks' => __DIR__ . '/..' . '/scribu/scb-framework/Hooks.php',
-        'scbLoad4' => __DIR__ . '/..' . '/scribu/scb-framework/load.php',
-        'scbMultipleChoiceField' => __DIR__ . '/..' . '/scribu/scb-framework/Forms.php',
-        'scbOptions' => __DIR__ . '/..' . '/scribu/scb-framework/Options.php',
-        'scbPostMetabox' => __DIR__ . '/..' . '/scribu/scb-framework/PostMetabox.php',
-        'scbRadiosField' => __DIR__ . '/..' . '/scribu/scb-framework/Forms.php',
-        'scbSelectField' => __DIR__ . '/..' . '/scribu/scb-framework/Forms.php',
-        'scbSingleCheckboxField' => __DIR__ . '/..' . '/scribu/scb-framework/Forms.php',
-        'scbSingleChoiceField' => __DIR__ . '/..' . '/scribu/scb-framework/Forms.php',
-        'scbTable' => __DIR__ . '/..' . '/scribu/scb-framework/Table.php',
-        'scbTextField' => __DIR__ . '/..' . '/scribu/scb-framework/Forms.php',
-        'scbUtil' => __DIR__ . '/..' . '/scribu/scb-framework/Util.php',
-        'scbWidget' => __DIR__ . '/..' . '/scribu/scb-framework/Widget.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

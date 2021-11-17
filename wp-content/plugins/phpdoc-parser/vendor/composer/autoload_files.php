@@ -6,10 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    '026a968263ec72e63c0a08beed134bb1' => $vendorDir . '/scribu/scb-framework/load-composer.php',
-    'a5d94d5918910fbb77c98dd8aa0cc5d9' => $vendorDir . '/scribu/scb-framework/Util.php',
     'fe1bcd0336136e435eaf197895daf81a' => $vendorDir . '/nikic/php-parser/lib/bootstrap.php',
-    'ccd56a9d2abb29bc4eedd4043666e3dd' => $vendorDir . '/scribu/lib-posts-to-posts/autoload.php',
     '2795ee4f58713c0c57b8e0e1b528277b' => $baseDir . '/lib/runner.php',
     '70422b1e2bdbbe0abd94363c5534e7bd' => $baseDir . '/lib/template.php',
 );
