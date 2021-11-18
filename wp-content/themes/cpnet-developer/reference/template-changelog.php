@@ -75,13 +75,7 @@ if ( ! empty( $changelog_data ) ) :
 					} else {
 						$description = '';
 					}
-
-					// Sometimes the "description" is the same as the "version"
-					// (and the "description" has an extra </span> at the end,
-					// which also needs to be fixed separately).
-					if ( preg_replace( '@<[^>]+>@', '', $data['description'] ) !== $version ) {
-						$description .= $data['description'];
-					}
+					$description .= $data['description'];
 
 					if ( substr( $version, 0, 3 ) === 'WP-' ) {
 						$version_description = "WordPress " . substr( $version, 3 );
