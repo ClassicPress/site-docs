@@ -213,17 +213,24 @@ function export_docblock( $element ) {
 			$tag_data['refers'] = $tag->getReference();
 		}
 		if ( method_exists( $tag, 'getVersion' ) ) {
-			// Version string.
+			// Get the version string parsed by phpDocumentor.
 			$version = $tag->getVersion();
+			// Get the description, and check to see if it contains a version
+			// like "WP-1.2.3" which is not parsed by getVersion() because it
+			// doesn't start with a number.
+			$description = preg_replace( '/[\n\r]+/', ' ', format_description( $tag->getDescription() ) );
+			if ( empty( $version ) && substr( $description, 0, 3 ) === 'WP-' ) {
+				$description_parts = explode( ' ', $description, 2 );
+				$version           = $description_parts[0];
+				$description       = $description_parts[1] ?? '';
+			}
+			// Set the version string.
 			if ( ! empty( $version ) ) {
 				$tag_data['content'] = $version;
 			}
-			// Description string.
-			if ( method_exists( $tag, 'getDescription' ) ) {
-				$description = preg_replace( '/[\n\r]+/', ' ', format_description( $tag->getDescription() ) );
-				if ( ! empty( $description ) ) {
-					$tag_data['description'] = $description;
-				}
+			// Set the description string.
+			if ( ! empty( $description ) ) {
+				$tag_data['description'] = $description;
 			}
 		}
 		$output['tags'][] = $tag_data;
