@@ -14,7 +14,7 @@ if ( ! empty( $changelog_data ) ) :
 	<hr />
 	<section class="changelog">
 		<h2><?php _e( 'Changelog', 'wporg' ); ?></h2>
-
+		<?php printf( '<span><small><em>%s<code>WP-</code>%s</em></small></span>', __( 'Versions with ', 'wporg' ), __( ' prefix describe changes made in WordPress, that were added either before ClassicPress was forked, or backported from WordPress after the fork. Versions without prefix refer to changes in code made by and for ClassicPress only.', 'wporg' ) );?>
 		<table>
 			<caption class="screen-reader-text"><?php _e( 'Changelog', 'wporg' ); ?></caption>
 			<thead>
