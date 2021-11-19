@@ -1151,8 +1151,8 @@ namespace DevHub {
 		// Source file.
 		$source_file = get_source_file( $post_id );
 		if ( ! empty( $source_file ) ) {
-			global $cp_version;
-			$url = 'https://github.com/ClassicPress/ClassicPress-release/blob/' . $cp_version . '/' . $source_file;
+			// TODO store parsed version separately from CP version
+			$url = 'https://github.com/ClassicPress/ClassicPress-release/blob/' . classicpress_version_short() . '/' . $source_file;
 			// Line number.
 			if ( $line_number = get_post_meta( get_the_ID(), '_wp-parser_line_num', true ) ) {
 				$url .= "#L{$line_number}";
