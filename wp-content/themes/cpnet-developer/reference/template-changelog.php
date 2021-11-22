@@ -19,7 +19,13 @@ if ( ! empty( $changelog_data ) ) :
 			<caption class="screen-reader-text"><?php _e( 'Changelog', 'wporg' ); ?></caption>
 			<thead>
 				<tr>
-					<th class="changelog-version"><?php _e( 'Version', 'wporg' ); ?></th>
+					<th class="changelog-version"><?php _e( 'Version', 'wporg' ); ?><span class="btn btn-primary tooltip"><span>?</span>
+	    				<div class="right">
+	        				<span><?php _e( 'Versions with <code>WP-</code> prefix describe changes made in WordPress prior to ClassicPress fork.', 'wporg' ); ?></span>
+	        				<i></i>
+						</div>
+					</span>
+					</th>
 					<th class="changelog-desc"><?php _e( 'Description', 'wporg' ); ?></th>
 				</tr>
 			</thead>
