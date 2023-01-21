@@ -1,4 +1,5 @@
 /.env
+wp-config.php
 /vendor/
 /wp-content/uploads/
 /wp-content/plugins/wp-discourse/
