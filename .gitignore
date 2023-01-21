@@ -1,0 +1,6 @@
+/.env
+/vendor/
+/wp-content/uploads/
+/wp-content/plugins/wp-discourse/
+/wp-content/plugins/phpdoc-parser-bak/
+/wp-content/plugins/phpdoc-parser/

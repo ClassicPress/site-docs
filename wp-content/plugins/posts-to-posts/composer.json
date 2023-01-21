@@ -1,0 +1,25 @@
+{
+    "name": "scribu/posts-to-posts",
+    "type": "wordpress-plugin",
+    "homepage": "http://wordpress.org/plugins/posts-to-posts",
+    "license": "GPL-2.0+",
+    "minimum-stability": "dev",
+    "scripts": {
+        "zip": "git archive --format zip --output \"../../posts-to-posts.zip\" master"
+    },
+    "require": {
+        "composer/installers": "~1.0",
+        "scribu/lib-posts-to-posts": "dev-master",
+        "mustache/mustache": "~2.6"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/jeffreyvr/wp-lib-posts-to-posts"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/jeffreyvr/wp-scb-framework"
+        }
+    ]
+}
