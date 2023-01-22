@@ -19,8 +19,8 @@ get_header(); ?>
 
 			<?php //wporg_developer_post_nav(); ?>
 
-		<?php endwhile; // end of the loop. ?>
+		<?php endwhile;?>
 
-		</main><!-- #main -->
+		</main><?php get_sidebar(); ?><!-- #main -->
 	</div><!-- #primary -->
 <?php get_footer(); ?>
