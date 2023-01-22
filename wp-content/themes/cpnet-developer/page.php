@@ -1,4 +1,4 @@
-<?php
+<?php namespace DevHub;
 /**
  * The template for displaying all pages.
  *

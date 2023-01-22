@@ -122,8 +122,8 @@ function init() {
 	add_theme_support( 'title-tag' );
 
 	// Modify default breadcrumbs.
-	add_filter( 'breadcrumb_trail_items',  __NAMESPACE__ . '\\breadcrumb_trail_items_for_hooks', 10, 2 );
-	add_filter( 'breadcrumb_trail_items',  __NAMESPACE__ . '\\breadcrumb_trail_items_for_handbook_root', 10, 2 );
+	//add_filter( 'breadcrumb_trail_items',  __NAMESPACE__ . '\\breadcrumb_trail_items_for_hooks', 10, 2 );
+	//add_filter( 'breadcrumb_trail_items',  __NAMESPACE__ . '\\breadcrumb_trail_items_for_handbook_root', 10, 2 );
 
 	add_filter( 'syntaxhighlighter_htmlresult', __NAMESPACE__ . '\\syntaxhighlighter_htmlresult' );
 }
@@ -138,7 +138,7 @@ function init() {
  * @param  array $items The breadcrumb trail items
  * @param  array $args  Original args
  * @return array
- */
+ *
 function breadcrumb_trail_items_for_hooks( $items, $args ) {
 	$post_type = 'wp-parser-hook';
 
@@ -157,7 +157,7 @@ function breadcrumb_trail_items_for_hooks( $items, $args ) {
 	unset( $items[4] );
 
 	return $items;
-}
+}*/
 
 /**
  * Fix breadcrumb for handbook root pages.
@@ -169,7 +169,7 @@ function breadcrumb_trail_items_for_hooks( $items, $args ) {
  * @param  array $items The breadcrumb trail items
  * @param  array $args  Original args
  * @return array
- */
+ *
 function breadcrumb_trail_items_for_handbook_root( $items, $args ) {
 	// Bail early if not a handbook landing page.
 	if ( ! function_exists( 'wporg_is_handbook_landing_page' ) || ! wporg_is_handbook_landing_page() ) {
@@ -180,7 +180,7 @@ function breadcrumb_trail_items_for_handbook_root( $items, $args ) {
 	unset( $items[1] );
 
 	return $items;
-}
+}*/
 
 /**
  * widgets_init function.

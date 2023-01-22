@@ -12,7 +12,7 @@ get_header(); ?>
 
 	<div id="content-area">
 
-		<?php breadcrumb_trail(); ?>
+		<?php \Hybrid\Breadcrumbs\Trail::display(); ?>
 
 		<main id="main" class="site-main" role="main">
 

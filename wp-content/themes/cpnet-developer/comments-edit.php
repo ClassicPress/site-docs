@@ -46,20 +46,11 @@ if ( $is_parent && isset( $parent->comment_ID ) ) {
 	$parent_label  = sprintf( __( 'note %d', 'wporg' ), $parent->comment_ID );
 	$parent_link   = sprintf( '<a href="%s">%s</a>', esc_url( $post_url . '#comment-' . $parent->comment_ID ), $parent_label );
 }
-
-add_filter( 'breadcrumb_trail_items', function( $items ) use ( $ref_link, $type_link, $post_link, $note_link ) {
-	$items[] = $ref_link;
-	$items[] = $type_link;
-	$items[] = $post_link;
-	$items[] = $note_link;
-	$items[] = __('Edit', 'wporg');
-	return $items;
-} );
 ?>
 
 	<div id="content-area" <?php body_class( 'code-reference' ); ?>>
 
-		<?php breadcrumb_trail( array( 'show_title' => false ) ); ?>
+		<?php \Hybrid\Breadcrumbs\Trail::display(); ?>
 
 		<main id="main" class="site-main" role="main">
 			<h1><?php printf( __( 'Edit Note %d', 'wporg' ), $comment_id ); ?></h1>
