@@ -581,7 +581,7 @@ add_action( 'admin_bar_init', function() {
 /**
  * Add editor style css
  */
-add_editor_style();
+add_editor_style('editor-style-20230122.css');
 
 /**
  * Enable shortcodes in widgets
