@@ -411,8 +411,7 @@ input {
 .devhub-wrap h1 {
   font-size: 28px;
   font-size: 3rem;
-  line-height: 32px;
-  line-height: 3.2rem;
+  line-height: 1.3;
   font-weight: 300;
   margin-bottom: 1.5rem;
 }
@@ -420,8 +419,7 @@ input {
 .devhub-wrap h2 {
   font-size: 22px;
   font-size: 2.2rem;
-  line-height: 26px;
-  line-height: 2.6rem;
+  line-height: 1.2;
   font-weight: 300;
 }
 
@@ -429,7 +427,7 @@ input {
   font-size: 20px;
   font-size: 2rem;
   line-height: 24px;
-  line-height: 2.4rem;
+  line-height: 1.1;
   font-weight: 300;
 }
 
@@ -827,18 +825,24 @@ input {
 .devhub-wrap .breadcrumbs {
   font-size: 13px;
   font-size: 1.3rem;
+  display: flex;
+  line-height: 1;
+  margin-bottom: 3rem;
+  gap: 1rem;
 }
 
-.devhub-wrap .breadcrumbs .active {
-  font-weight: 600;
+.devhub-wrap .breadcrumbs h2{
+  font-size: inherit;
+  line-height: 1;
 }
-
-.devhub-wrap .breadcrumb-trail {
-  margin-bottom: 2rem;
+.devhub-wrap .breadcrumbs ul{
+	list-style: none;
+	margin: 0;
+	display: flex;
 }
-
-.devhub-wrap .breadcrumb-trail a {
-  text-decoration: none;
+.devhub-wrap .breadcrumbs ul li:not(:last-child):after{
+	content: "\203A";
+	padding: 0 5px;
 }
 
 .devhub-wrap h1.entry-title,
@@ -1247,6 +1251,11 @@ input {
     margin-right: 0;
     padding-right: 0;
     width: initial;
+  }
+  .devhub-wrap .breadcrumbs ul{
+	flex-direction: column;
+    gap: 0.3rem;
+    line-height: 1.3;
   }
 }
 
@@ -3263,4 +3272,132 @@ button.code-tab.is-active {
 .copy-to-clipboard-button{
   color: black !important;
   background: rgb(224 224 224 / 61%) !important;
+}
+
+/* overrides for mobile header */
+body #download-mobile span.download-ready {
+	font-size: 100%;
+}
+
+body #download-mobile a.download-button {
+	font-size: 100%;
+}
+
+/* override for text going outside the widgets on mobile */
+.widget-content ul {
+	overflow: auto;
+}
+
+/* remove link underline */
+a {
+	text-decoration: none;
+}
+
+/* box it*/
+#main {
+	max-width: 97rem;
+	margin: 0 auto;
+}
+.type-page{
+	padding: 1.5em 1em;
+}
+
+/* Footer
+ * @see https://forums.classicpress.net/t/docs-site-needs-a-footer/3317
+ */
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+#wpadminbar {
+	/* Use flexbox positioning for the admin bar instead. See also the section
+	 * that removes the '_admin_bar_bump_cb' callback in functions.php
+	 */
+	position: static;
+	order: -1;
+}
+/* TODO: if there are any other elements that may be a direct child of the
+ * <body> tag, add them here!
+ */
+body > header, #page {
+	flex: 1;
+}
+body:not(.home) > #masthead  {
+max-height: 61px;
+min-height: 61px;
+}
+.site-info {
+	color: #ffffff;
+	background-color: #222222;
+	text-align: center;
+	padding: 20px;
+	font-size: 15px;
+}
+a.footer-link {
+	color: white;
+}
+a.footer-link-grey {
+	color: #aaa;
+}
+
+/** Top Search button */
+button.top-src-btn {
+	padding:  0px !important;
+	background:  rgba(5, 127, 153, 1.0) !important;
+	border:  0px !important;
+}
+button.top-src-btn:hover {
+	background:  rgba(5, 127, 153, 1.0) !important;
+	border:  0px !important;
+}
+/*contribute box main ladning page*/
+.contribute-wrap{
+	width: 100%;
+	text-align: center;
+	margin-top:  0px !important;
+}
+.box-contribute{
+	width: 100% !important;
+}
+/*code syntax*/
+pre.folded{
+	max-height: 309px;
+}
+#toggle-complete-source{
+	display: none;
+	margin-right: 15px;
+}
+p.source-action-links{
+	display: inline-flex;
+}
+	
+/* ToC and headings */
+h1, h2, h3 {
+	position: relative;
+}
+a.cp-heading-link {
+	border-bottom: none;
+	font-weight: normal;
+	font-size: 0.85em;
+	display: block;
+	position: absolute;
+	top: 0.1em;
+	left: -1.2em;
+	color: #057f99;
+}
+@media (max-width: 800px) {
+	a.cp-heading-link {
+		left: -1em;
+	}
+}
+a.cp-heading-link:hover {
+	text-decoration: underline;
+	color: #3ebca6;
+}
+.cpnet-toc ul {
+	margin-bottom: 0;
+}
+.cpnet-toc {
+	margin-bottom: 1.5em;
 }

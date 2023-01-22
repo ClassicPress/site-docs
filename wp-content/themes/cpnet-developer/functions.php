@@ -1,6 +1,13 @@
 <?php
 namespace DevHub;
 
+/*
+ * Composer autoload
+ */
+if ( file_exists( get_parent_theme_file_path( 'vendor/autoload.php' ) ) ) {
+	require_once( get_parent_theme_file_path( 'vendor/autoload.php' ) );
+}
+
 /**
  * Registrations (post type, taxonomies, etc).
  */
@@ -28,10 +35,6 @@ require_once( __DIR__ . '/inc/parsed-content.php' );
 
 if ( ! function_exists( 'loop_pagination' ) ) {
 	require __DIR__ . '/inc/loop-pagination.php';
-}
-
-if ( ! function_exists( 'breadcrumb_trail' ) ) {
-	require __DIR__ . '/inc/breadcrumb-trail.php';
 }
 
 /**
@@ -579,3 +582,8 @@ add_action( 'admin_bar_init', function() {
  * Add editor style css
  */
 add_editor_style();
+
+/**
+ * Enable shortcodes in widgets
+ */
+add_filter( 'widget_text', 'do_shortcode' );

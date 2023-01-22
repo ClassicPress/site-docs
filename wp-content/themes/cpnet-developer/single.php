@@ -9,15 +9,13 @@ get_header(); ?>
 
 	<div id="content-area" <?php body_class( 'code-reference' ); ?>>
 
-		<?php breadcrumb_trail(); ?>
+		<?php \Hybrid\Breadcrumbs\Trail::display(); ?>
 
 		<main id="main" class="site-main" role="main">
 
 		<?php while ( have_posts() ) : the_post(); ?>
 
 			<?php get_template_part( 'content', ( is_parsed_post_type() ? 'reference' : get_post_type() ) ); ?>
-
-			<?php //wporg_developer_post_nav(); ?>
 
 		<?php endwhile; // end of the loop. ?>
 
