@@ -303,7 +303,7 @@ function header_js() {
 
 function theme_scripts_styles() {
 
-	$version = "20230121";
+	$version = "20230122";
 	wp_enqueue_style( 'dashicons' );
 	wp_enqueue_style( 'cpnet-developer-style', get_stylesheet_uri(), array(), $version );
 	wp_enqueue_style( 'wp-dev-sass-compiled', get_template_directory_uri() . '/stylesheets/main.css', array( 'cpnet-developer-style' ), $version );
