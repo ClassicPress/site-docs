@@ -1,6 +1,13 @@
 <?php
 namespace DevHub;
 
+/*
+ * Composer autoload
+ */
+if ( file_exists( get_parent_theme_file_path( 'vendor/autoload.php' ) ) ) {
+	require_once( get_parent_theme_file_path( 'vendor/autoload.php' ) );
+}
+
 /**
  * Registrations (post type, taxonomies, etc).
  */
@@ -28,10 +35,6 @@ require_once( __DIR__ . '/inc/parsed-content.php' );
 
 if ( ! function_exists( 'loop_pagination' ) ) {
 	require __DIR__ . '/inc/loop-pagination.php';
-}
-
-if ( ! function_exists( 'breadcrumb_trail' ) ) {
-	require __DIR__ . '/inc/breadcrumb-trail.php';
 }
 
 /**
@@ -119,8 +122,8 @@ function init() {
 	add_theme_support( 'title-tag' );
 
 	// Modify default breadcrumbs.
-	add_filter( 'breadcrumb_trail_items',  __NAMESPACE__ . '\\breadcrumb_trail_items_for_hooks', 10, 2 );
-	add_filter( 'breadcrumb_trail_items',  __NAMESPACE__ . '\\breadcrumb_trail_items_for_handbook_root', 10, 2 );
+	//add_filter( 'breadcrumb_trail_items',  __NAMESPACE__ . '\\breadcrumb_trail_items_for_hooks', 10, 2 );
+	//add_filter( 'breadcrumb_trail_items',  __NAMESPACE__ . '\\breadcrumb_trail_items_for_handbook_root', 10, 2 );
 
 	add_filter( 'syntaxhighlighter_htmlresult', __NAMESPACE__ . '\\syntaxhighlighter_htmlresult' );
 }
@@ -135,7 +138,7 @@ function init() {
  * @param  array $items The breadcrumb trail items
  * @param  array $args  Original args
  * @return array
- */
+ *
 function breadcrumb_trail_items_for_hooks( $items, $args ) {
 	$post_type = 'wp-parser-hook';
 
@@ -154,7 +157,7 @@ function breadcrumb_trail_items_for_hooks( $items, $args ) {
 	unset( $items[4] );
 
 	return $items;
-}
+}*/
 
 /**
  * Fix breadcrumb for handbook root pages.
@@ -166,7 +169,7 @@ function breadcrumb_trail_items_for_hooks( $items, $args ) {
  * @param  array $items The breadcrumb trail items
  * @param  array $args  Original args
  * @return array
- */
+ *
 function breadcrumb_trail_items_for_handbook_root( $items, $args ) {
 	// Bail early if not a handbook landing page.
 	if ( ! function_exists( 'wporg_is_handbook_landing_page' ) || ! wporg_is_handbook_landing_page() ) {
@@ -177,7 +180,7 @@ function breadcrumb_trail_items_for_handbook_root( $items, $args ) {
 	unset( $items[1] );
 
 	return $items;
-}
+}*/
 
 /**
  * widgets_init function.
@@ -300,7 +303,7 @@ function header_js() {
 
 function theme_scripts_styles() {
 
-	$version = "20230121";
+	$version = "20230122";
 	wp_enqueue_style( 'dashicons' );
 	wp_enqueue_style( 'cpnet-developer-style', get_stylesheet_uri(), array(), $version );
 	wp_enqueue_style( 'wp-dev-sass-compiled', get_template_directory_uri() . '/stylesheets/main.css', array( 'cpnet-developer-style' ), $version );
@@ -578,4 +581,9 @@ add_action( 'admin_bar_init', function() {
 /**
  * Add editor style css
  */
-add_editor_style();
+add_editor_style('editor-style-20230122.css');
+
+/**
+ * Enable shortcodes in widgets
+ */
+add_filter( 'widget_text', 'do_shortcode' );
