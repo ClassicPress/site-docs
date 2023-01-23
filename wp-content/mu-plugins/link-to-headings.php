@@ -20,6 +20,9 @@ add_action( 'wp', 'cpnet_maybe_link_to_headings' );
 
 add_shortcode('cpdocs-toc', 'cpnet_toc');
 
+// Parse shoercodes in widgets.
+add_filter( 'widget_text', 'do_shortcode' );
+
 function cpnet_toc() {
 	$post_ID = get_the_id();
 	if ( $post_ID === false ) {
